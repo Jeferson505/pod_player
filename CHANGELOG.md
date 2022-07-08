@@ -6,6 +6,11 @@
 * Added `PodPlayerLabels` param to `PodVideoPlayer` widget
 * Added PodPlayerLabels usage example in `from_asset` file
 
+## 0.0.7
+* dependencies upgraded
+  - video_player: ^2.4.5
+* code refactor
+
 ## 0.0.6
 * Upgraded to Dart 2.17.0
 * Bug fixes
