@@ -7,6 +7,9 @@ class _PodUiController extends _PodBaseController {
   Widget? videoTitle;
   DecorationImage? videoThumbnail;
 
+  /// Callback when volume is updated by the volume slider
+  void Function(double updatedVolume)? onUpdateVolumeBySlider;
+
   /// Callback when fullscreen mode changes
   Future<void> Function(bool isFullScreen)? onToggleFullScreen;
 

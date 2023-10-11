@@ -1,6 +1,10 @@
 part of 'pod_getx_video_controller.dart';
 
 class _PodVideoController extends _PodUiController {
+  /// Debouncer used to avoid repeatedly calling the volume slider bounce
+  /// callback function
+  final _debouncer = Debouncer(delay: const Duration(milliseconds: 500));
+
   Timer? showOverlayTimer;
   Timer? showOverlayTimer1;
 
@@ -74,6 +78,14 @@ class _PodVideoController extends _PodUiController {
     }
     update(['volume']);
     update(['update-all']);
+  }
+
+  /// Update the volume from volume slider and call the callback function to
+  /// this action if it's defined
+  void updateVolumeBySlider(double updatedVolumeValue) {
+    setVolume(updatedVolumeValue).then((_) {
+      _debouncer.call(() => onUpdateVolumeBySlider?.call(updatedVolumeValue));
+    });
   }
 
   ///*controll play pause

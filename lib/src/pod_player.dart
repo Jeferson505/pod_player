@@ -46,6 +46,9 @@ class PodVideoPlayer extends StatefulWidget {
   final Color? backgroundColor;
   final DecorationImage? videoThumbnail;
 
+  /// Optional callback, fired only when volume is updated by the volume slider
+  final void Function(double updatedVolume)? onUpdateVolumeBySlider;
+
   /// Optional callback, fired when full screen mode toggles.
   ///
   /// Important: If this method is set, the configuration of [DeviceOrientation]
@@ -71,6 +74,7 @@ class PodVideoPlayer extends StatefulWidget {
     this.onVideoError,
     this.backgroundColor,
     this.videoThumbnail,
+    this.onUpdateVolumeBySlider,
     this.onToggleFullScreen,
     this.onLoading,
   }) {
@@ -89,6 +93,7 @@ class PodVideoPlayer extends StatefulWidget {
       ..podProgressBarConfig = podProgressBarConfig
       ..overlayBuilder = overlayBuilder
       ..videoTitle = videoTitle
+      ..onUpdateVolumeBySlider = onUpdateVolumeBySlider
       ..onToggleFullScreen = onToggleFullScreen
       ..onLoading = onLoading
       ..videoThumbnail = videoThumbnail;
